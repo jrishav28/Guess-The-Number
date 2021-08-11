@@ -2,16 +2,13 @@
 let score = 20;
 let highScore = 0;
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
-//console.log(secretNumber);
-console.log(document.querySelector('.message').textContent);
 
-//console.log((document.querySelector('.number').textContent = 13));
-//console.log((document.querySelector('.guess').value = 10));
+
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
 
-  // FUNCTION FOR DIDPLAYING MESSAGE
+  // FUNCTION FOR DISPLAYING MESSAGE
   const displayMessage = function (message) {
     document.querySelector('.message').textContent = message;
   };
@@ -23,18 +20,17 @@ document.querySelector('.check').addEventListener('click', function () {
   //correct guess
   else if (guess === secretNumber) {
     document.querySelector('.number').textContent = secretNumber;
-    // document.querySelector('.message').textContent =
     displayMessage('🎈🎈🎈 correct guess 🎈🎈🎈');
     document.querySelector('body').style.backgroundColor = 'green';
     document.querySelector('.number').style.width = '30rem';
-    //channge high score
+    
+   //channge high score
     if (score > highScore) {
       highScore = score;
       document.querySelector('.highscore').textContent = score;
     }
   } else if (score !== secretNumber) {
     if (score > 1) {
-      //   document.querySelector('.message').textContent =
       displayMessage(
         guess > secretNumber ? '🔼🔼🔼  too high' : 'too low  🔽🔽🔽'
       );
